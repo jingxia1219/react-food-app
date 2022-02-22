@@ -14,7 +14,7 @@ function App() {
 
   return (
     <Fragment>
-      <Cart closeModal = {closeModalHandler} modalStatus={modalStatus}/>
+      {modalStatus && <Cart closeModal = {closeModalHandler} modalStatus={modalStatus}/>}
       <Header openModal={openModalHandler}/>
       <Meals/>
     </Fragment>

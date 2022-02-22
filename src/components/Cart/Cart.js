@@ -32,7 +32,7 @@ function Cart (props) {
 ;
     // console.log(cartItems)
     return <div>
-        {props.modalStatus && modalElement}
+        {modalElement}
         </div>
 }
 
