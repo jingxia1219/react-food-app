@@ -6,23 +6,17 @@ import {useContext} from 'react';
 function MealItem(props) {
     const ctx = useContext(CartContext);
     const price = `$${props.price.toFixed(2)}`
-    function onAmountHandler(amount){
-        ctx.addItem(
-            {name: props.name}
-        )
-        ctx.totalAmount= ctx.totalAmount+props.price 
-    }
 
     let thisItemTotal=0;
-    function getItemNumber(itemNumber){
+    function getItemNumberHandler(itemNumber){
         console.log(itemNumber)
-        console.log(ctx.items.includes(props.meal) === false)
+        // console.log(ctx.items.includes(props.meal) === false)
         if (itemNumber > 0 && ctx.items.includes(props.meal) === false){
-            console.log(props.meal)
+            // console.log(props.meal)
           ctx.items.push(props.meal)
-          thisItemTotal= itemNumber*props.price
-          ctx.totalAmount = ctx.totalAmount+thisItemTotal
         }
+        thisItemTotal= itemNumber*props.price
+        ctx.totalAmount = (+ctx.totalAmount+thisItemTotal).toFixed(2)
         console.log("CTX",ctx)
     }
 
@@ -33,7 +27,7 @@ function MealItem(props) {
              <div className={classes.description}>{props.description}</div>
             <div className={classes.price}>{price}</div>
             </div>
-            <MealItemForm getItemNumber={getItemNumber} onAmount={onAmountHandler}/> 
+            <MealItemForm getItemNumber={getItemNumberHandler}/> 
         </li>
     )
 }

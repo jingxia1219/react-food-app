@@ -15,7 +15,7 @@
     }
     function getInputHandler(inputState) {
         console.log(inputState);
-        itemNum= inputState
+        itemNum = inputState;
     }
     return(
         // <Fragment>

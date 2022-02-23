@@ -24,6 +24,7 @@ function App() {
   }
   return (
     <CartContext.Provider value={CartContextValue}>
+      {console.log(CartContextValue)}
       {modalStatus && <Cart closeModal = {closeModalHandler} modalStatus={modalStatus}/>}
       <Header openModal={openModalHandler}/>
       <Meals/>
