@@ -1,38 +1,39 @@
- import {useState, useRef, Fragment} from 'react';
+ import {useState, useRef} from 'react';
  import classes from './MealItemForm.module.css'
  import Input from '../Input'
+
  
  function MealItemForm(props) {
     //  let itemCount;
-     const inputRef = useRef(null);
+    //  const inputRef = useRef(null);
     //  const [itemInput,setItemInput] = useState(0);
-    // function submitHandler(event) {
-    //     event.preventDefault();
-    //     console.log(inputRef.current.value); 
-    //     setItemInput(inputRef.current.value)
-    // }
+    let itemNum = 0;
+    function submitHandler(event) {
+        event.preventDefault();
+        // console.log(); 
+        props.getItemNumber(itemNum)
+    }
+    function getInputHandler(inputState) {
+        console.log(inputState);
+        itemNum= inputState
+    }
     return(
         // <Fragment>
         <form className={classes.form} 
-        // onSubmit={submitHandler}
+        onSubmit={submitHandler}
         >
-            <Input label="Amount" input={{
+            <Input getInput={getInputHandler} label="Amount" input={{
                 id:'amount_'+props.id,
                 type:'number',
-                min:'1',
+                min:'0',
                 max:'5',
                 step: '1',
-                defaultValue: '1'
-                // type='number' min='0' max='99' ref={inputRef}
-            }}
-            />
-            {/* {itemCount}</input> */}
-
+                defaultValue: '0'
+            }}/>
             <button type='submit'>+ Add</button>
         </form>
         )
-        /*{ <div className={classes.itemCount}>{`itemCount:${itemInput}`}</div> }*/
-        /*{ </Fragment> }*/
+    
  }
 
  export default MealItemForm;

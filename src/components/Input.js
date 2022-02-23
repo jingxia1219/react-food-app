@@ -1,12 +1,17 @@
 import classes from './Input.module.css';
-import {useRef} from 'react'
+import {useState} from 'react'
 
 function Input(props) {
-    const inputRef = useRef()
+    const [inputState,setInputState] = useState(0)
+    function changeHandler(event) {
+        // console.log(event.target.value)
+        setInputState(event.target.value)
+    }
+    props.getInput(inputState);
     return(
         <div className={classes.input}>
             <label htmlFor={props.input.id}>{props.label}</label>
-                <input ref={inputRef}{...props.input}/>
+                <input onChange = {changeHandler} {...props.input}/>
         </div>
     )
 }
