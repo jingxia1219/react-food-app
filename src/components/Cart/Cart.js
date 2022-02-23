@@ -7,12 +7,13 @@ import CartContext from '../../store/cart-context';
 function Cart (props) {
     const ctx = useContext(CartContext);
     console.log(ctx)
+    const hasItems = ctx.items.length > 0 ;
     let totalAmount= 0;
     const cartItems = (
 
         <ul className={classes['cart-items']}>
             {ctx.items.map( item =>{
-                totalAmount = item.price + totalAmount;
+                totalAmount = `$${ctx.totalAmount}`;
                 return(
                 <li key={item.id}>{item.name}</li>)
             })}
@@ -29,7 +30,7 @@ function Cart (props) {
     </div>
     <div className={classes.actions}>
     <button className={classes['button--alt']} onClick={closeHandler}>Close</button>
-    <button className={classes.button}>Order</button>
+    {hasItems && <button className={classes.button}>Order</button>}
     </div>
     </Modal>
 ;

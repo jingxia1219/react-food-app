@@ -7,16 +7,15 @@ function MealItem(props) {
     const ctx = useContext(CartContext);
     const price = `$${props.price.toFixed(2)}`
 
-    let thisItemTotal=0;
+    // let thisItemTotal=0;
     function getItemNumberHandler(itemNumber){
         console.log(itemNumber)
-        // console.log(ctx.items.includes(props.meal) === false)
         if (itemNumber > 0 && ctx.items.includes(props.meal) === false){
-            // console.log(props.meal)
-          ctx.items.push(props.meal)
+
+          ctx.addItem({...props.meal, amount:+itemNumber})
         }
-        thisItemTotal= itemNumber*props.price
-        ctx.totalAmount = (+ctx.totalAmount+thisItemTotal).toFixed(2)
+        // thisItemTotal= itemNumber*props.price
+        // ctx.totalAmount = +(ctx.totalAmount+thisItemTotal).toFixed(2)
         console.log("CTX",ctx)
     }
 

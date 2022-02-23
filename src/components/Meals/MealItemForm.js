@@ -4,6 +4,7 @@
 
  
  function MealItemForm(props) {
+     const [inputValid, setInputValid] = useState(true)
     //  let itemCount;
     //  const inputRef = useRef(null);
     //  const [itemInput,setItemInput] = useState(0);
@@ -11,7 +12,12 @@
     function submitHandler(event) {
         event.preventDefault();
         // console.log(); 
-        props.getItemNumber(itemNum)
+        if (itemNum <= 5 && itemNum > 0)
+        {setInputValid(true)
+        props.getItemNumber(itemNum)}
+        else {
+            setInputValid(false)
+        }
     }
     function getInputHandler(inputState) {
         console.log(inputState);
@@ -31,6 +37,7 @@
                 defaultValue: '0'
             }}/>
             <button type='submit'>+ Add</button>
+            { !inputValid && <p>Please enter a number between 1 - 5. </p>}
         </form>
         )
     

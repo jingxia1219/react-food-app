@@ -5,13 +5,12 @@ import {useContext} from 'react'
 
 function HeaderCartButton(props) {
     const ctx = useContext(CartContext);
-    // console.log(ctx);
-
     function clickCartHandler() {
+        console.log(ctx)
         props.openModal();
     }
    let numOfItems = 0;  
-   console.log(ctx)
+   console.log("HeaderCartButton, ctx:",ctx)
    ctx.items.forEach(item=> numOfItems= numOfItems+item.amount)
     return(
         <button onClick={clickCartHandler} className={classes.button}>
