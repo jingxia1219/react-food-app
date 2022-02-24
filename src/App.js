@@ -1,14 +1,3 @@
-import Header from './components/Header'
-import React,{useState, useReducer} from 'react';
-import Meals from './components/Meals/Meals'
-import Cart from './components/Cart/Cart'
-// import CartProvider from './store/CartProvider'
-import CartContext from './store/cart-context';
-
-const defaultCartState={
-  items:[],
-  totalAmount:0
-};
 // function cartReducer(state,{type,payload}) {
 //   if (type === 'ADD') {
 //     const updatedItems = state.items.concat(payload);
@@ -21,20 +10,41 @@ const defaultCartState={
 //     }
 //   }
 // }
+// const defaultCartState={
+//   items:[],
+//   totalAmount:0
+// };
+// const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
+import Header from './components/Header'
+import React,{useState, useReducer} from 'react';
+import Meals from './components/Meals/Meals'
+import Cart from './components/Cart/Cart'
+import CartContext from './store/cart-context';
+
 
 function App() {
   const [totalAmountState,setTotalAmountState] = useState(0)
   const [cartItems, setCartItems]=useState([])
-  // const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
   const [modalStatus, setModalStatus] =useState(false)
   
   function addItemHandler(item){
-    setCartItems((cartItems)=>{ return [...cartItems,item]});
+    const existingIndex = cartItems.findIndex(existingitem => item.id === existingitem.id )
+    if (cartItems[existingIndex]){
+      const updatedItem = {...item, amount:(1+cartItems[existingIndex].amount)}
+      // cartItems[existingIndex].amount = cartItems[existingIndex].amount + item.amount
+     let updatedItems = cartItems;
+     updatedItems[existingIndex] = updatedItem;
+     setCartItems(updatedItems);
+    } else {
+    setCartItems((cartItems)=>{ return [...cartItems,item]})
+    console.log('cartIems in App.js:', cartItems)}
     setTotalAmountState((totalAmount)=>{
-      return (totalAmount+item.price*item.amount)
-    })
+      return (totalAmount+item.price*item.amount)}
+    )
   }
-  function removeItemHandler(id) {}
+  function removeItemHandler(id) {
+    
+  }
 
   function openModalHandler() {
     setModalStatus(true)
