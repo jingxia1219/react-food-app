@@ -11,7 +11,6 @@ function MealItem(props) {
     function getItemNumberHandler(itemNumber){
         console.log(itemNumber)
         if (itemNumber > 0 && ctx.items.includes(props.meal) === false){
-
           ctx.addItem({...props.meal, amount:+itemNumber})
         }
         // thisItemTotal= itemNumber*props.price

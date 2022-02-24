@@ -9,45 +9,45 @@ const defaultCartState={
   items:[],
   totalAmount:0
 };
-function cartReducer(state,{type,payload}) {
-  if (type === 'ADD') {
-    const updatedItems = state.items.concat(payload);
-    console.log('state,',state)
-    console.log(payload)
-    const updatedTotalAmount = (+state.totalAmount + payload.price*payload.amount).toFixed(2)
-    return {
-      items: updatedItems,
-      totalAmount: updatedTotalAmount
-    }
-  }
-  return defaultCartState;
-}
+// function cartReducer(state,{type,payload}) {
+//   if (type === 'ADD') {
+//     const updatedItems = state.items.concat(payload);
+//     console.log('state,',state)
+//     console.log(payload)
+//     const updatedTotalAmount = (+state.totalAmount + payload.price*payload.amount).toFixed(2)
+//     return {
+//       items: updatedItems,
+//       totalAmount: updatedTotalAmount
+//     }
+//   }
+// }
 
 function App() {
-  const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
-  function addItemHandler(item) {
-    dispatchCartAction({type: 'ADD', payload:item})
-  }
-  function removeItemHandler(id) {
-    dispatchCartAction({type:'REMOVE', payload: id})
-  }
-
+  const [totalAmountState,setTotalAmountState] = useState(0)
+  const [cartItems, setCartItems]=useState([])
+  // const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState)
   const [modalStatus, setModalStatus] =useState(false)
+  
+  function addItemHandler(item){
+    setCartItems((cartItems)=>{ return [...cartItems,item]});
+    setTotalAmountState((totalAmount)=>{
+      return (totalAmount+item.price*item.amount)
+    })
+  }
+  function removeItemHandler(id) {}
+
   function openModalHandler() {
     setModalStatus(true)
   }
   function closeModalHandler() {
     setModalStatus(false)
   }
-  // function addItem() {}
-  // function removeItem() {}
-
+//  console.log(cartItems)
   const CartContextValue = {
-    items:cartState.items,
-    totalAmount: +cartState.totalAmount,
+    items:cartItems,
+    totalAmount: +totalAmountState.toFixed(2),
     addItem:addItemHandler,
     removeItem: removeItemHandler
-
   }
   return (
     <CartContext.Provider value={CartContextValue}>
