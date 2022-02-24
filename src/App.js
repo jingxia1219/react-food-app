@@ -49,16 +49,19 @@ function App() {
     const amount = cartItems[existingIndex].amount - 1
     let updatedItem = cartItems[existingIndex]; 
     let updatedItems = cartItems
-    console.log("amount",amount)
+    console.log("amount after minus 1:",amount)
     if (amount > 0) {
-      updatedItem = {...cartItems[existingIndex],amount:amount };
-     updatedItems[existingIndex] = updatedItem
+      console.log("in this case, there's still at least 1 item for this meal after removals")
+      updatedItem = {...cartItems[existingIndex],amount:amount };//to update the amount to amount - 1
+     updatedItems[existingIndex] = updatedItem // new array with updated item
      setCartItems(updatedItems)
-  
+      console.log("cartItems",cartItems)
     } else { //when amount is 0 
+      console.log("amount is 0 after removal")
        updatedItems = cartItems.filter( item =>  item.id !== id )
-     console.log(updatedItems)
       setCartItems(updatedItems)
+      console.log("updatedItems:", updatedItems)
+      console.log("cartItems",cartItems)
      }
      setTotalAmountState((totalAmount)=>{
       return (totalAmount-updatedItem.price)}
@@ -71,7 +74,6 @@ function App() {
   function closeModalHandler() {
     setModalStatus(false)
   }
-//  console.log(cartItems)
   const CartContextValue = {
     items:cartItems,
     totalAmount: +totalAmountState.toFixed(2),

@@ -20,7 +20,7 @@
         }
     }
     function getInputHandler(inputState) {
-        console.log(inputState);
+        // console.log(inputState);
         itemNum = inputState;
     }
     return(

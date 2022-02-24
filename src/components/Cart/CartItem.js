@@ -18,7 +18,7 @@ function CartItem(props) {
         const removeHandler = (event) => {
             ctx.removeItem(item.id)
             console.log(ctx)
-            if (item.amount ===0) { 
+            if (item.amount ===1) { 
                 setItems( items => { return items.filter( funcItem => funcItem.id !== item.id ) })}
                 props.reloadCart();
         }
