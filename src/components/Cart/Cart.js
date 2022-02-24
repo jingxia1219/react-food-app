@@ -1,19 +1,14 @@
-// import {useState} from 'react'
- //     <ul className={classes['cart-items']}>
- //         {ctx.items.map( item =>{
- //             totalAmount = `$${ctx.totalAmount}`;
- // return(
- //             <li key={item.id}>{item.name}</li>)
- //         })}
- //     </ul>
- // );
 import classes from './Cart.module.css';
 import Modal from '../../UI/Modal';
-import {useContext, useEffect} from 'react'
+import {useContext, useState} from 'react'
 import CartContext from '../../store/cart-context';
 import CartItem from './CartItem'
 
 function Cart (props) {
+    const [reload, setReload] = useState(0); 
+    function reloadHandler() {
+        setReload( prev => {return prev+1})
+    }
     const ctx = useContext(CartContext);
     console.log(ctx)
     const hasItems = ctx.items.length > 0 ;
@@ -21,7 +16,7 @@ function Cart (props) {
         props.closeModal();
     };
     const modalElement = <Modal closeModal={props.closeModal}>
-    <ul className={classes['cart-items']}><CartItem/></ul>
+    <ul className={classes['cart-items']}><CartItem reloadCart={reloadHandler}/></ul>
     <div className={classes.total}>
         <span>Total Amount</span>
         <span>{ctx.totalAmount}</span>

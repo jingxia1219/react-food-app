@@ -10,7 +10,7 @@ function HeaderCartButton(props) {
         props.openModal();
     }
    let numOfItems = 0;  
-   console.log("HeaderCartButton, ctx:",ctx)
+//    console.log("HeaderCartButton, ctx:",ctx)
    ctx.items.forEach(item=> numOfItems= numOfItems+item.amount)
     return(
         <button onClick={clickCartHandler} className={classes.button}>

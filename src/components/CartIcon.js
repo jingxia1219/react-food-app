@@ -1,5 +1,5 @@
 const CartIcon = (props) => {
-    console.log(props.style)
+    // console.log(props.style)
     return (
       <svg style={props.style}
         xmlns='http://www.w3.org/2000/svg'

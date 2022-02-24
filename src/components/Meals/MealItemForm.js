@@ -31,10 +31,10 @@
             <Input getInput={getInputHandler} label="Amount" input={{
                 id:'amount_'+props.id,
                 type:'number',
-                min:'0',
+                min:'1',
                 max:'5',
                 step: '1',
-                defaultValue: '0'
+                defaultValue: '1'
             }}/>
             <button type='submit'>+ Add</button>
             { !inputValid && <p>Please enter a number between 1 - 5. </p>}

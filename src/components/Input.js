@@ -2,7 +2,7 @@ import classes from './Input.module.css';
 import {useState} from 'react'
 
 function Input(props) {
-    const [inputState,setInputState] = useState(0)
+    const [inputState,setInputState] = useState(1)
     function changeHandler(event) {
         // console.log(event.target.value)
         setInputState(event.target.value)
