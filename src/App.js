@@ -33,7 +33,7 @@ function App() {
       const updatedItem = {...item, amount:(item.amount+cartItems[existingIndex].amount)}
      let updatedItems = cartItems;
      updatedItems[existingIndex] = updatedItem;
-     setCartItems(updatedItems);
+     setCartItems([...updatedItems]);
     } else {
     setCartItems((cartItems)=>{ return [...cartItems,item]})
   }

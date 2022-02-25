@@ -23,7 +23,7 @@ function HeaderCartButton(props) {
             //     clearTimeout(timer)
             // }
         }
-    } , [ctx])
+    } , [ctx.items])
    let numOfItems = 0;  
 //    console.log("HeaderCartButton, ctx:",ctx)
    ctx.items.forEach(item=> numOfItems= numOfItems+item.amount)
