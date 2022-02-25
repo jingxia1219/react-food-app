@@ -2,7 +2,7 @@ import  classes from './Header.module.css';
 import MealImage from '../assets/meals.jpg';
 import {Fragment} from 'react'
 import HeaderCartButton  from './HeaderCartButton';
-import CartContext  from '../store/cart-context';
+// import CartContext  from '../store/cart-context';
 
 function Header(props) {
 

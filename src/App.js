@@ -71,6 +71,7 @@ function App() {
     addItem:addItemHandler,
     removeItem: removeItemHandler
   }
+  console.log(CartContextValue.items)
   return (
     <CartContext.Provider value={CartContextValue}>
       {/* {console.log("CartContext in App.js:",CartContextValue)} */}

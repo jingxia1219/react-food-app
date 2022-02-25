@@ -1,6 +1,6 @@
 import classes from './CartItem.module.css'
 import CartContext from '../../store/cart-context'
-import {useContext,Fragment, useState} from 'react'
+import {useContext,Fragment} from 'react'
 
 function CartItem() {
     const ctx = useContext(CartContext)
