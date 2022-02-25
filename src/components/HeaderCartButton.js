@@ -9,19 +9,21 @@ function HeaderCartButton(props) {
         // console.log(ctx)
         props.openModal();
     }
-    console.log(ctx.items)
     const [bumpEffect, setBumpEffect] = useState(false)
+    console.log("bumpEffect:",bumpEffect)
+    console.log("ctx.items.length > 0?",ctx.items.length > 0)
     useEffect(()=> {
         if (ctx.items.length > 0) {
-            setBumpEffect(true)
-            const timer = setTimeout(()=>{
+            console.log('length > 0, should bump')
+            setBumpEffect(true,
+            setTimeout(()=>{
                 setBumpEffect(false)
-            }, 300)
-            return () => {
-                clearTimeout(timer)
-            }
+            }, 300))
+            // return () => {
+            //     clearTimeout(timer)
+            // }
         }
-    } , [ctx.items])
+    } , [ctx])
    let numOfItems = 0;  
 //    console.log("HeaderCartButton, ctx:",ctx)
    ctx.items.forEach(item=> numOfItems= numOfItems+item.amount)

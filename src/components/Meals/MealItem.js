@@ -8,10 +8,9 @@ function MealItem(props) {
     const price = `$${props.price.toFixed(2)}`
 
     function getItemNumberHandler(itemNumber){
-        // console.log(itemNumber)
-        if (itemNumber > 0 && ctx.items.includes(props.meal) === false){
-          ctx.addItem({...props.meal, amount:+itemNumber})
-        }
+        if (itemNumber > 0 )
+        // && ctx.items.includes(props.meal) === false){
+          ctx.addItem({...props.meal, amount:itemNumber})
     }
 
     return (

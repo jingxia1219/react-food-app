@@ -12,9 +12,9 @@ amount:1};
         ctx.addItem(singleItem)
     }
     const removeHandler = (event) => {
-    console.log('Now deleting one ',item.name)
+    // console.log('Now deleting one ',item.name)
     ctx.removeItem(item.id)
-    console.log(item.name, " item.amount: ", item.amount)
+    // console.log(item.name, " item.amount: ", item.amount)
         if (item.amount === 0) { 
             // setItems( items => { return items.filter( funcItem => funcItem.id !== item.id ) })
         }

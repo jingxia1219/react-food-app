@@ -5,13 +5,9 @@
  
  function MealItemForm(props) {
      const [inputValid, setInputValid] = useState(true)
-    //  let itemCount;
-    //  const inputRef = useRef(null);
-    //  const [itemInput,setItemInput] = useState(0);
     let itemNum = 0;
     function submitHandler(event) {
         event.preventDefault();
-        // console.log(); 
         if (itemNum <= 5 && itemNum > 0)
         {setInputValid(true)
         props.getItemNumber(itemNum)}
@@ -20,11 +16,9 @@
         }
     }
     function getInputHandler(inputState) {
-        // console.log(inputState);
         itemNum = inputState;
     }
     return(
-        // <Fragment>
         <form className={classes.form} 
         onSubmit={submitHandler}
         >
